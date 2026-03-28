@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/VulkanTut.dir/link.d CMakeFiles/VulkanTut.dir/src/vulkantut.cpp.o -o VulkanTut  _deps/glfw-build/src/libglfw3.a /lib64/libvulkan.so /usr/lib64/librt.a -lm -ldl
