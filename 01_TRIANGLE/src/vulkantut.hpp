@@ -38,6 +38,9 @@ private:
     // stores the gpu we will end up using
     VkPhysicalDevice physicalDevice = VK_NULL_HANDLE; // implicitly destoroyed when VkInstance is destroyed
 
+    VkQueue graphicsQueue;
+
+
 public:
     void run() 
     {
