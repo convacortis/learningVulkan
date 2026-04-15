@@ -132,6 +132,9 @@ private:
     VkDebugUtilsMessengerEXT debugMessenger;
     VkSurfaceKHR surface;
 
+    // stores the gpu we will end up using
+    VkPhysicalDevice physicalDevice = VK_NULL_HANDLE; // implicitly destoroyed when VkInstance is destroyed
+
     VkDevice device;
 
     VkQueue graphicsQueue;
@@ -142,10 +145,9 @@ private:
     VkFormat swapChainImageFormat;
     VkExtent2D swapChainExtent;
 
-    // VkDebugUtilsMessengerEXT debugMessenger; - when implement validation layers
+    std::vector<VkImageView> swapChainImageViews;
 
-    // stores the gpu we will end up using
-    VkPhysicalDevice physicalDevice = VK_NULL_HANDLE; // implicitly destoroyed when VkInstance is destroyed
+    
 
 
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData) 
@@ -188,6 +190,8 @@ private:
     void pickPhysicalDevice();
     void createLogicalDevice();
     void createSwapChain();
+    void createImageViews();
+    
 
     VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
     VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
