@@ -27,12 +27,14 @@
 
 #include <iostream>
 #include <stdexcept>
-#include <cstdlib>
-#include <cstring>
+#include <algorithm>
 #include <vector>
-#include <map>
-#include <set>
+#include <cstring>
+#include <cstdlib>
+#include <cstdint>
+#include <limits>
 #include <optional>
+#include <set>
 
 #include "logging.h"
 
@@ -44,6 +46,10 @@
 
 const std::vector<const char*> validationLayers = {
     "VK_LAYER_KHRONOS_validation"
+};
+
+const std::vector<const char*> deviceExtensions = {
+    VK_KHR_SWAPCHAIN_EXTENSION_NAME
 };
 
 
@@ -102,6 +108,15 @@ struct QueueFamilyIndices
     }
 };
 
+struct SwapChainSupportDetails 
+{
+    VkSurfaceCapabilitiesKHR capabilities;
+    std::vector<VkSurfaceFormatKHR> formats;
+    std::vector<VkPresentModeKHR> presentModes;
+};
+
+
+
 
 class VulkanTutApplication 
 {
@@ -122,6 +137,10 @@ private:
     VkQueue graphicsQueue;
     VkQueue presentQueue;
 
+    VkSwapchainKHR swapChain;
+    std::vector<VkImage> swapChainImages;
+    VkFormat swapChainImageFormat;
+    VkExtent2D swapChainExtent;
 
     // VkDebugUtilsMessengerEXT debugMessenger; - when implement validation layers
 
@@ -168,10 +187,16 @@ private:
 
     void pickPhysicalDevice();
     void createLogicalDevice();
-    
-    
+    void createSwapChain();
+
+    VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
+    VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
+    VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
+
+    SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
     
     bool isDeviceSuitable(VkPhysicalDevice device);
+    bool checkDeviceExtensionSupport(VkPhysicalDevice device);
     
     
     std::vector<const char*> getRequiredExtensions();
