@@ -2,7 +2,7 @@
 
 One of the key choices for Sodaview (game engine) was to use Vulkan, this directory includes code and documentation of my learning process from rendering a triangle to 3D objects.
 
-### Projects
+### Project documentation
 
 1. [Vulkan triangle](01_triangle/docs/main.md) — intro to core fundamentals of vulkan 
 
