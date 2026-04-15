@@ -4,7 +4,7 @@ One of the key choices for Sodaview (game engine) was to use Vulkan, this direct
 
 ### Project documentation
 
-1. [Vulkan triangle](/01_triangle/docs/main.md) — intro to core fundamentals of vulkan 
+1. [Vulkan triangle](/01_TRIANGLE/docs/main.md) — intro to core fundamentals of vulkan 
 
 
 
