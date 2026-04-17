@@ -101,6 +101,7 @@ void VulkanTutApplication::initVulkan()
     createLogicalDevice();
     createSwapChain();
     createImageViews();
+    createGraphicsPipeline();
 }
 
 
@@ -118,7 +119,7 @@ void VulkanTutApplication::cleanup()
     {
         vkDestroyImageView(device, imageView, nullptr);
     }
-    
+
     vkDestroySwapchainKHR(device, swapChain, nullptr);
     vkDestroyDevice(device, nullptr);
     if (enableValidationLayers) 
@@ -385,6 +386,14 @@ void VulkanTutApplication::createImageViews()
         }
     }
 }
+
+
+
+void VulkanTutApplication::createGraphicsPipeline()
+{
+    
+}
+
 
 
 

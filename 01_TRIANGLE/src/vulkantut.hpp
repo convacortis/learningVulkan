@@ -191,7 +191,9 @@ private:
     void createLogicalDevice();
     void createSwapChain();
     void createImageViews();
-    
+
+    void createGraphicsPipeline();
+
 
     VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
     VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
