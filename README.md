@@ -4,20 +4,18 @@ One of the key choices for Sodaview (game engine) was to use Vulkan, this direct
 
 ### Project documentation
 
-1. [Vulkan triangle](/01_TRIANGLE/docs/main.md) — intro to core fundamentals of vulkan 
-
+1. [Vulkan triangle](/01_TRIANGLE/docs/main.md) - intro to core fundamentals of vulkan 
 
 
 
 
 ### Build instructions
 
-1. Choose project you want to build and CD into that directory
+*Dependencies*: python, cmake, vulkan and glslc are required for build to be successful
 
-2. `mkdir build`
 
-3. `cd build`
+1. Each project has its own branch - clone the project you want to build
 
-4. `cmake --build .`
+2. Run the python build script `build.py`
 
-5. `./VulkanTut`
+3. Find and run binary `VulkanTut` (VulkanTut.exe on windows) in `build/` directory
