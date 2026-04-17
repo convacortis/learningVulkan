@@ -17,12 +17,12 @@ def main():
         winBuild()
 
     else:
-        print("System currently not supported")
+        print("System: ", sys.platform, " currently not supported")
 
 
 
 
-def compileShaders():
+def compileShaders(): # in future could just pass platform tweaking whether glslc is found or glslc.exe is searched for
     glslc = shutil.which("glslc")
 
     if not glslc:
@@ -34,7 +34,7 @@ def compileShaders():
     
     shader_dir = script_dir / "shaders"
 
-    print(shader_dir)
+    print("shader folder: ", shader_dir)
 
     for shader_file in shader_dir.glob("*"):
         if shader_file.suffix in [".vert", ".frag", ".comp"]:
@@ -78,7 +78,7 @@ def linuxBuild():
     else: 
         print("Shaders successfully compiled")
 
-    # compile project with cmake
+    # attempt to compile project with cmake
 
     cmakeBuild()
 

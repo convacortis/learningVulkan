@@ -18,4 +18,4 @@ One of the key choices for Sodaview (game engine) was to use Vulkan, this direct
 
 2. Run the python build script `build.py`
 
-3. Find and run binary `VulkanTut` (VulkanTut.exe on windows) in `build/` directory
+3. Find and run binary `VulkanTut` (`VulkanTut.exe` on windows) in `build/` directory

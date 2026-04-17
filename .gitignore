@@ -1,2 +1,6 @@
 .vscode/
+
+# 01_TRIANGLE
 01_TRIANGLE/build/
+01_TRIANGLE/shaders/shader.frag.spv
+01_TRIANGLE/shaders/shader.vert.spv
