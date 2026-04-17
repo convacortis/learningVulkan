@@ -4,18 +4,20 @@ import os
 import shutil
 from pathlib import Path
 
+script_dir = Path(__file__).parent.resolve()
+# FOR FUTURE ---- build_type = "Release" if "--release" in sys.argv else "Debug"
+
 
 def main():
+
     if sys.platform.startswith('linux'):
-        
         linuxBuild()
 
     elif sys.platform == 'win32':
-        print("Building Sodaview for Windows")
         winBuild()
 
     else:
-        print("System currently not supported by Sodaview")
+        print("System currently not supported")
 
 
 
@@ -29,7 +31,7 @@ def compileShaders():
     else:
         print("found glcls: ", glslc)
 
-    script_dir = Path(__file__).parent.resolve()
+    
     shader_dir = script_dir / "shaders"
 
     print(shader_dir)
@@ -51,9 +53,23 @@ def compileShaders():
 
 
 
+def cmakeBuild():
+    if ((script_dir / "build").exists()):
+        print("not first time compilation - recompiling")
+        subprocess.run(["cmake", "--build", "build"])
+
+    else:
+        print("running first time compilation")
+        subprocess.run(["cmake", "-S", ".", "-B", "build"])
+        subprocess.run(["cmake", "--build", "build"])
+
+
+
+
+
 
 def linuxBuild():
-    print("Building Sodaview for Linux")  
+    print("Building for Linux")  
 
     # compile all shader files from shader directory and give feedback
     if ( compileShaders() == False ):
@@ -64,11 +80,14 @@ def linuxBuild():
 
     # compile project with cmake
 
+    cmakeBuild()
+
     
 
 
 
 def winBuild():
+    print("Building for Windows")
     print("windows not currently supported - coming soon!")
 
 
