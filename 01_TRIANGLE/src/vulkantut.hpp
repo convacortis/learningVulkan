@@ -26,6 +26,7 @@
 
 
 #include <iostream>
+#include <fstream>
 #include <stdexcept>
 #include <algorithm>
 #include <vector>
@@ -147,6 +148,7 @@ private:
 
     std::vector<VkImageView> swapChainImageViews;
 
+    VkPipelineLayout pipelineLayout;
     
 
 
@@ -193,6 +195,7 @@ private:
     void createImageViews();
 
     void createGraphicsPipeline();
+    VkShaderModule createShaderModule(const std::vector<char>& code);
 
 
     VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
@@ -207,6 +210,28 @@ private:
     
     std::vector<const char*> getRequiredExtensions();
     bool checkValidationLayerSupport();
+    
+
+    // readfile will take the file and return a buffer for the size of that file
+    static std::vector<char> readFile(const std::string& filename) 
+    {
+        std::ifstream file(filename, std::ios::ate | std::ios::binary);
+
+        if (!file.is_open()) 
+        {
+            throw std::runtime_error("failed to open file!");
+        }
+
+        size_t fileSize = (size_t) file.tellg();
+        std::vector<char> buffer(fileSize);
+
+        file.seekg(0);
+        file.read(buffer.data(), fileSize);
+
+        file.close();
+
+        return buffer;
+    }
 
 
     // FIND QUEUE FAMILIES FOR PHYSICAL DEVICE (GPU) AND ADD TO QueueFamilyIndicies STRUCT
