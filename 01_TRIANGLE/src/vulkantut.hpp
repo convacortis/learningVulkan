@@ -148,9 +148,10 @@ private:
 
     std::vector<VkImageView> swapChainImageViews;
 
-    VkPipelineLayout pipelineLayout;
-    
+    VkRenderPass renderPass;
+    VkPipelineLayout pipelineLayout;    
 
+    VkPipeline graphicsPipeline;
 
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData) 
     {
@@ -193,6 +194,7 @@ private:
     void createLogicalDevice();
     void createSwapChain();
     void createImageViews();
+    void createRenderPass();
 
     void createGraphicsPipeline();
     VkShaderModule createShaderModule(const std::vector<char>& code);
